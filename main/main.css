@@ -1,3 +1,42 @@
+.sidebar {
+    height: 100%;
+    width: 165px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding-top: 10px;
+    background-color: darkblue;
+}
+
+.sidebar heading {
+    font-size:27px;
+    padding:8px;
+    color:white;
+}
+
+.sidebar a {
+    padding: 8px;
+    font-size: 24px;
+    color: red;
+    display: block;
+    text-decoration: none;
+}
+
+.sidebar a:hover {
+    cursor: pointer;
+    opacity: .7;
+}
+
+.body-text {
+    margin-left: 150px;
+    font-size: 18px;
+}
+
+body {
+    background-color: black;
+    color: white;
+}
+
 .center {
   display: block;
   margin-left: auto;
