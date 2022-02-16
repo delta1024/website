@@ -15,8 +15,8 @@
 
 (require 'org)
 (require 'dired)
-(dired-delete-file "~/website/site-files" 'always)
 
+(shell-command "find ./site-files ! -name 'index.html' -type d -exec rm -rf {} +")
 (setq org-publish-project-alist
       '(("orgfiles"
 	 :base-directory "~/website"
@@ -33,12 +33,10 @@
 	 :publishing-function org-publish-attachment)
 
 	("other"
-	 :base-directory "~/website/"
+	 :base-directory "~/website/styles"
 	 :base-extension "css"
-	 :exlude "test.css"
-	 :publishing-directory "~/website/site-files/"
-	 :publishing-function org-publish-attachment
-	 :recursive t)
+	 :publishing-directory "~/website/site-files/styles"
+	 :publishing-function org-publish-attachment)
 
 	("website" :components ("orgfiles" "images" "other"))))
 
