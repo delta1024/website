@@ -1,10 +1,10 @@
 #+TITLE: Writing a Website With Org Mode
 #+SUBTITLE: Websites Formated Easy
-#+INCLUDE: "../../org-templates/blog-header.org"
+#+INCLUDE: "../../org-headers/settings.org"
 #+HTML_HEAD: <link rel="stylesheet" href="../../styles/org.css"/>
 #+HTML_HEAD_EXTRA: <link rel="stylesheet" href="../../styles/sidebar.css"/>
 #+HTML_HEAD_EXTRA: <link rel="stylesheet" href="test.css"/>
-#+INCLUDE: "../../org-templates/sidebar.org"
+
 
 * The Why
 Recently while building this website, i have found that i rather enjoy

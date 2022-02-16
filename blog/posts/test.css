@@ -1,0 +1,12 @@
+body {
+    background-color: black;
+    color: white;
+}
+
+ul.org-ul {
+    color: white;
+}
+
+div.sidebar {
+    display: hidden;
+}
