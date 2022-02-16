@@ -1,0 +1,4 @@
+#+HTML: <div class="sidebar"><nav>
+[[../../index.html][Home]]
+[[../index.html][Blog Top]]
+#+HTML: </nav></div>

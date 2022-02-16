@@ -1,0 +1,68 @@
+#+TITLE: Writing a Website With Org Mode
+#+SUBTITLE: Websites Formated Easy
+#+INCLUDE: "../../org-templates/blog-header.org"
+#+HTML_HEAD: <link rel="stylesheet" href="../../styles/org.css"/>
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" href="../../styles/sidebar.css"/>
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" href="test.css"/>
+#+INCLUDE: "../../org-templates/sidebar.org"
+
+* The Why
+Recently while building this website, i have found that i rather enjoy
+syling html and css. Thankfuly choosing to build your website from
+only css and html, with a sprinkle of javascript, offers plenty of
+opertunity to do just that. While Html is great, it does not lend
+itself well to creative writing.
+
+Enter =org-mode=, one of the most useful markup languages i know of. If
+you're unaware org mode was created in _____ by ______ as an extention to
+emacs' bulit in outline-mode. Over time org mode has come to
+completely replace todo-mode in most users workflow due to it's
+ability to export to a number of makeup languages, html included, as
+well as a host of other features -- most of which are outside the
+scope of this article.
+
+Org mode comes with a number of export backends out of the box. They
+are as follows:
+- iCalender
+- Html
+- LaTeX
+- ODT
+- Plain Text
+- Publish
+
+#+BEGIN_COMMENT
+While these backends are great, I would like to understand what they
+are doing on a basic level. I also would like to have all the css and
+javascript be in seperate files instead of in the files header
+decleration. To that end I am goin to be writing my own custom html
+export backend. This will also allow for more fine grained control of
+what is being exported and depending on the dificulty I could created
+an number of export backends, each with there own look and feel to
+allow for the entire website to be authored in org mode files and then
+exported to the appropreate file structure using org publish. The
+initial project goal however will be to create an export backend to
+turn org documents into blog posts.
+
+*This is a lot of work so we're just going to propery configure org
+mode and write the blog post about that instead*
+#+END_COMMENT
+
+* TODO COMMENT Talk about the process of formating the website with org mode
+Things to Remember:
+
+ - Take a screenshot of the site befor and after applying the settings
+   to the org document as well as the css styling.
+
+ - Go through the process of configuring the document step by step
+   starting with the default configs
+
+ - Explain what you are configuring and the reasoning for doing the
+   way you did
+
+* The Plan
+The easiest way to organize the project would most likeyly be through
+two files: an emacs library to hold the exporter code and a publishing
+script that will handle updateing the web server with the appropreate
+files.
+
+

@@ -1,0 +1,17 @@
+#+TITLE: The Blog
+#+INCLUDE: "../org-headers/settings.org"
+#+OPTIONS: title:nil
+#+HTML_HEAD: <link rel="stylesheet" href="../styles/site.css">
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" href="../styles/sidebar.css">
+
+#+ATTR_HTML: :class sidebar
+- [[../index.org][Home]]
+
+* Site Under Construction
+:PROPERTIES:
+:HTML_CONTAINER_CLASS: page-header
+:END:
+
+#+ATTR_HTML: :class center :alt nyancat
+[[../media/poptart1redrainbowfix_1.0.gif]]
+

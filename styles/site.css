@@ -3,15 +3,16 @@ body {
     color: white;
 }
 
-header {
+.page-header > h2 {
     font-weight: bold;
     color: darkgreen;
+    text-align: center;
     font-size: 35px;
 }
 
 .center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
 }
