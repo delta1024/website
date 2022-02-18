@@ -33,14 +33,14 @@
 (setq org-publish-use-timestamps-flag 'nil)
 
 (setq exclude
-  (let ((org-headers '("settings.org"
-		       "sidebar.org"))
-	(final-string 'nil))
+      (let ((org-headers '("settings.org"
+			   "sidebar.org"))
+	    (final-string 'nil))
 
-    (dolist (file org-headers)
-      (setq final-string (concat file "\\|" final-string)))
+	(dolist (file org-headers)
+	  (setq final-string (concat file "\\|" final-string)))
 
-    (string-trim-right final-string "\\\\|")))
+	(string-trim-right final-string "\\\\|")))
 
 (setq org-publish-project-alist
       `(("index"
@@ -48,7 +48,7 @@
 	 :base-extension "org"
 	 :publishing-directory "~/website/site-dir"
          :publishing-function org-html-publish-to-html)
-         
+        
 	("images"
 	 :base-directory "~/website/media"
 	 :base-extension "jpg\\|gif\\|png"
@@ -70,9 +70,11 @@
 	 :publishing-function org-html-publish-to-html)
 
 	("css"
-	 :base-directory "~/website/styles"
+	 :base-directory "~/website/"
 	 :base-extension "css"
-	 :publishing-directory "~/website/site-dir/styles"
+	 :exclude "site-dir"
+	 :recursive t
+	 :publishing-directory "~/website/site-dir/"
 	 :publishing-function org-publish-attachment)
 	
 	("all" :components ("website" "blog" "css"))))

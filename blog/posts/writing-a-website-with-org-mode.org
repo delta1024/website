@@ -1,10 +1,12 @@
 #+TITLE: Writing a Website With Org Mode
 #+SUBTITLE: Websites Formated Easy
-#+INCLUDE: "../../org-headers/settings.org"
-#+HTML_HEAD: <link rel="stylesheet" href="../../styles/org.css"/>
-#+HTML_HEAD_EXTRA: <link rel="stylesheet" href="../../styles/sidebar.css"/>
+#+OPTIONS: toc:nil timestamp:nil author:nil title:t
+#+OPTIONS: date:nil num:nil html-postamble:nil html-style:nil
+#+HTML_DOCTYPE: html5
+#+HTML_HEAD: <link rel="stylesheet" href="../../styles/sidebar.css"/>
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" href="../../styles/site.css"/>
 #+HTML_HEAD_EXTRA: <link rel="stylesheet" href="test.css"/>
-
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" href="../../styles/org.css"/>
 
 * The Why
 Recently while building this website, i have found that i rather enjoy
@@ -54,7 +56,7 @@ mode and write the blog post about that instead*
 * TODO COMMENT Talk about the process of formating the website with org mode
 Things to Remember:
 
- - Take a screenshot of the site befor and after applying the settings
+ - Take a screenshot of the site before and after applying the settings
    to the org document as well as the css styling.
 
  - Go through the process of configuring the document step by step

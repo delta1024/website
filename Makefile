@@ -33,20 +33,22 @@ RSYNC_COMMAND = rsync -vrP --delete-after $(OUTPUT_DIR)/ $(HOST)
 BUILD_COMMAND = emacs -q -Q -nw --script ./publish.el --generate-section
 
 ####### Source Files #######
-css_files := $(wildcard $(CSS_DIR)/*.css)
+base_css_files := $(wildcard $(CSS_DIR)/*.css)
+blog_css_files := $(wildcard $(BLOG_DIR)/posts/*.css)
 blog_posts := $(wildcard $(BLOG_DIR)/posts/*.org)
 index_files := index.org blog/index.org
 
 ####### Output Files #######
 blog_post_output := $(addprefix $(OUTPUT_DIR)/,$(blog_posts:.org=.html))
-css_output := $(addprefix $(OUTPUT_DIR)/,$(css_files))
+base_css_output := $(addprefix $(OUTPUT_DIR)/,$(base_css_files))
+blog_css_output := $(addprefix $(OUTPUT_DIR)/,$(blog_css_files))
 index_files_output := $(addprefix $(OUTPUT_DIR)/,$(index_files:.org=.html))
 
 ####### Phony Rules #######
 
-.PHONY: all clean sync index css post index fast 
+.PHONY: all clean sync index css post quick
 
-all: $(index_files_output) $(css_output) $(blog_post_output)
+all: $(index_files_output) $(base_css_output) $(blog_post_output) $(blog_css_output) 
 
 index:
 	$(BUILD_COMMAND) website
@@ -64,7 +66,7 @@ sync:
 clean:
 	rm -rf $(OUTPUT_DIR)
 
-fast:
+quick:
 	$(BUILD_COMMAND) all
 
 ####### File Rules #######
@@ -75,7 +77,7 @@ $(OUTPUT_DIR) $(BLOG_OUTPUT_DIR) $(CSS_OUTPUT_DIR) $(BLOG_POST_OUTPUT_DIR):
 $(index_files_output): $(index_files) | $(OUTPUT_DIR) $(BLOG_OUTPUT_DIR)
 	$(BUILD_COMMAND) website
 
-$(css_output): $(css_files) | $(CSS_OUTPUT_DIR)
+$(base_css_output) $(blog_css_output): $(base_css_files) $(blog_css_files)| $(CSS_OUTPUT_DIR)
 	$(BUILD_COMMAND) css
 
 $(blog_post_output): $(blog_posts) | $(BLOG_POST_OUTPUT_DIR) 

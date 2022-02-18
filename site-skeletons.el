@@ -75,9 +75,16 @@
   ""
   "#+HTML_HEAD_EXTRA: <link rel=\"stylesheet\" href=\""
   (skeleton-read "Top Directory? ") "styles/"
-  (skeleton-read "Css File? ") "\"/>" \n -)
+  _ |(skeleton-read "Css File? ") "\"/>" \n -)
 
 (define-key site-skeletons-prefix-map (kbd "c") #'site-skeletons-css)
+
+(define-skeleton site-skeletons-attribute
+  "insert html attribute at point"
+  "Attributes: "
+  "#+ATTR_HTML: " str -)
+
+(define-key site-skeletons-prefix-map (kbd "a") #'site-skeletons-attribute)
 
 (unless site-skeletons-suppress-auto-insert-mode
   (auto-insert-mode t))

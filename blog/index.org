@@ -1,8 +1,9 @@
 #+TITLE: The Blog
-#+INCLUDE: "../org-headers/settings.org"
-#+OPTIONS: title:nil
-#+HTML_HEAD: <link rel="stylesheet" href="../styles/site.css">
-#+HTML_HEAD_EXTRA: <link rel="stylesheet" href="../styles/sidebar.css">
+#+OPTIONS: toc:nil timestamp:nil author:nil
+#+OPTIONS: date:nil num:nil html-postamble:nil html-style:nil
+#+HTML_DOCTYPE: html5
+#+HTML_HEAD: <link rel="stylesheet" href="../styles/sidebar.css"/>
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" href="../styles/site.css"/>
 
 #+ATTR_HTML: :class sidebar
 - [[../index.org][Home]]
