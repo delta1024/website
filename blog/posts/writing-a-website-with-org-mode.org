@@ -30,6 +30,10 @@ are as follows:
 - Plain Text
 - Publish
 
+This allows one to write a document in a single, easy to learn format
+while still catering to the various demands of whatever markup
+language you may find yourself beholden to.
+
 #+BEGIN_COMMENT
 While these backends are great, I would like to understand what they
 are doing on a basic level. I also would like to have all the css and
@@ -59,10 +63,6 @@ Things to Remember:
  - Explain what you are configuring and the reasoning for doing the
    way you did
 
-* The Plan
-The easiest way to organize the project would most likeyly be through
-two files: an emacs library to hold the exporter code and a publishing
-script that will handle updateing the web server with the appropreate
-files.
+
 
 

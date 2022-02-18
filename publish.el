@@ -78,7 +78,7 @@
 	("all" :components ("website" "blog" "css"))))
 
 
-(setq command-switch-alist '(("--generate-profile" . (lambda (arg)
+(setq command-switch-alist '(("--generate-section" . (lambda (arg)
 						       (let ((option (pop command-line-args-left)))
 							 (org-publish option))))))
 

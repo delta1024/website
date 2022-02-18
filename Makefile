@@ -30,7 +30,7 @@ BLOG_POST_OUTPUT_DIR := $(OUTPUT_DIR)/$(BLOG_POST_DIR)
 
 ####### Command Variables #######
 RSYNC_COMMAND = rsync -vrP --delete-after $(OUTPUT_DIR)/ $(HOST)
-BUILD_COMMAND = emacs -q -Q -nw --script ./publish.el --generate-profile
+BUILD_COMMAND = emacs -q -Q -nw --script ./publish.el --generate-section
 
 ####### Source Files #######
 css_files := $(wildcard $(CSS_DIR)/*.css)
@@ -38,56 +38,46 @@ blog_posts := $(wildcard $(BLOG_DIR)/posts/*.org)
 index_files := index.org blog/index.org
 
 ####### Output Files #######
-blog_post_output := $(addprefix $(OUTPUT_DIR)/, $(blog_posts:.org=.html))
+blog_post_output := $(addprefix $(OUTPUT_DIR)/,$(blog_posts:.org=.html))
 css_output := $(addprefix $(OUTPUT_DIR)/,$(css_files))
-index_files_out := $(addprefix $(OUTPUT_DIR)/,$(index_files:.org=.html))
+index_files_output := $(addprefix $(OUTPUT_DIR)/,$(index_files:.org=.html))
 
+####### Phony Rules #######
 
-####### Rules #######
-.PHONY: all clean sync index css post index
+.PHONY: all clean sync index css post index fast 
 
-all: $(index_files_out) $(css_output) $(blog_post_output)
+all: $(index_files_output) $(css_output) $(blog_post_output)
 
-### Site Indexes ###
 index:
 	$(BUILD_COMMAND) website
 
-$(index_files_out): $(index_files) | $(OUTPUT_DIR) $(BLOG_OUTPUT_DIR)
-	$(BUILD_COMMAND) website
-
-$(OUTPUT_DIR):
-	mkdir $(OUTPUT_DIR)
-
-$(BLOG_OUTPUT_DIR):
-	mkdir -p $(BLOG_OUTPUT_DIR)
-
-### Css Files ###
 css:
 	$(BUILD_COMMAND) css
 
-$(css_output): $(css_files) | $(CSS_OUTPUT_DIR)
-	$(BUILD_COMMAND) css
-
-$(CSS_OUTPUT_DIR):
-	mkdir -p $(CSS_OUTPUT_DIR)
-
-### Blog Posts ###
 post:
 	$(BUILD_COMMAND) blog
 
-$(blog_post_output): $(blog_posts) | $(BLOG_POST_OUTPUT_DIR) 
-	$(BUILD_COMMAND) blog
-
-$(BLOG_POST_OUTPUT_DIR): | $(BLOG_OUTPUT_DIR)
-	mkdir -p $(BLOG_POST_OUTPUT_DIR)
-
-### MISC ###
-sync: 				# Syncs the files located in $(OUTPUT_DIR) to $(HOST)
-	$(MAKE)
+sync: 		
+	$(MAKE) fast
 	$(RSYNC_COMMAND)
 
 clean:
 	rm -rf $(OUTPUT_DIR)
 
-full:
+fast:
 	$(BUILD_COMMAND) all
+
+####### File Rules #######
+
+$(OUTPUT_DIR) $(BLOG_OUTPUT_DIR) $(CSS_OUTPUT_DIR) $(BLOG_POST_OUTPUT_DIR):
+	mkdir $@
+
+$(index_files_output): $(index_files) | $(OUTPUT_DIR) $(BLOG_OUTPUT_DIR)
+	$(BUILD_COMMAND) website
+
+$(css_output): $(css_files) | $(CSS_OUTPUT_DIR)
+	$(BUILD_COMMAND) css
+
+$(blog_post_output): $(blog_posts) | $(BLOG_POST_OUTPUT_DIR) 
+	$(BUILD_COMMAND) blog
+

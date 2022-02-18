@@ -1,3 +1,0 @@
-#+OPTIONS: toc:nil timestamp:nil author:nil 
-#+OPTIONS: date:nil num:nil html-postamble:nil html-style:nil
-#+HTML_DOCTYPE: html5
