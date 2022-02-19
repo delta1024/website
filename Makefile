@@ -34,7 +34,7 @@ BUILD_COMMAND = emacs -q -Q -nw --script ./publish.el --generate-section
 
 ####### Source Files #######
 base_css_files := $(wildcard $(CSS_DIR)/*.css)
-blog_css_files := $(wildcard $(BLOG_DIR)/posts/*.css)
+blog_css_files := $(wildcard $(BLOG_DIR)/posts/styles/*.css)
 blog_posts := $(wildcard $(BLOG_DIR)/posts/*.org)
 index_files := index.org blog/index.org
 

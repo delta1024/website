@@ -5,11 +5,11 @@
 #+HTML_DOCTYPE: html5
 #+HTML_HEAD: <link rel="stylesheet" href="../../styles/sidebar.css"/>
 #+HTML_HEAD_EXTRA: <link rel="stylesheet" href="../../styles/site.css"/>
-#+HTML_HEAD_EXTRA: <link rel="stylesheet" href="test.css"/>
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" href="styles/writing-a-website.css"/>
 #+HTML_HEAD_EXTRA: <link rel="stylesheet" href="../../styles/org.css"/>
 
-# #+ATTR_HTML: :class sidebar
-# - [[../../index.org][Home]]
+#+ATTR_HTML: :class sidebar
+- [[../../index.org][Home]]
 
 * The Why
 Recently while building this website, i have found that i rather enjoy
