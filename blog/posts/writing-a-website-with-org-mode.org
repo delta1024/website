@@ -18,6 +18,7 @@ only css and html, with a sprinkle of javascript, offers plenty of
 opertunity to do just that. While Html is great, it does not lend
 itself well to creative writing.
 
+#+ATTR_HTML: :class code
 Enter =org-mode=, one of the most useful markup languages i know of. If
 you're unaware org mode was created in _____ by ______ as an extention to
 emacs' bulit in outline-mode. Over time org mode has come to
@@ -38,7 +39,7 @@ are as follows:
 This allows one to write a document in a single, easy to learn format
 while still catering to the various demands of whatever markup
 language you may find yourself beholden to.
-
+#+ATTR_HTML: :class code
 To get started creat an org document to hold the contents of your webpage. Any file opened in emacs version 24.3 or highter with the extention =.org= will automatically be opened in ~org-mode~. To start with i’m going to create a title for the webpage by adding the following line to the top of the document:
 #+begin_src org
   #+TITLE: Writing a Website with Org Mode
@@ -46,6 +47,10 @@ To get started creat an org document to hold the contents of your webpage. Any f
 
 When the document is exported by using the key sequence ~C-c e h h~ form inside the org document it produces something along the lines of this:
 
+[[./writing-a-website/zero_custom.jpg]]
+[[./writing-a-website/zero_custom.org][page source]]
+
+As you can see it's fairly bare bones.
 
 #+BEGIN_COMMENT
 While these backends are great, I would like to understand what they

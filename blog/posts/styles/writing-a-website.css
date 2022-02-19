@@ -5,3 +5,11 @@
 code {
     color: darkorange;
 }
+
+img {
+    width: 100%;
+}
+
+p.code > code {
+    color: green;
+}

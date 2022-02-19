@@ -58,6 +58,7 @@
     	("blog"
 	 :base-directory "~/website/blog/posts/"
 	 :base-extension "org"
+	 :recursive t
 	 :publishing-directory "~/website/site-dir/blog/posts"
 	 :publishing-function org-html-publish-to-html)
 
