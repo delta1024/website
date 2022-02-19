@@ -29,19 +29,9 @@
 ;;; Code:
 
 (require 'org)
-(require 'dired)
+
 (setq org-publish-use-timestamps-flag 'nil)
-
-(setq exclude
-      (let ((org-headers '("settings.org"
-			   "sidebar.org"))
-	    (final-string 'nil))
-
-	(dolist (file org-headers)
-	  (setq final-string (concat file "\\|" final-string)))
-
-	(string-trim-right final-string "\\\\|")))
-
+(setq css-fontify-colors 'nil)
 (setq org-publish-project-alist
       `(("index"
 	 :base-directory "~/website"
@@ -50,9 +40,11 @@
          :publishing-function org-html-publish-to-html)
         
 	("images"
-	 :base-directory "~/website/media"
+	 :base-directory "~/website/"
 	 :base-extension "jpg\\|gif\\|png"
-	 :publishing-directory "~/website/site-dir/media"
+	 :ignore "site-dir"
+	 :publishing-directory "~/website/site-dir/"
+	 :recursive t
 	 :publishing-function org-publish-attachment)
 
 	("blog_index"

@@ -27,17 +27,14 @@
 
 ;;; Code:
 
-;;;###autoload
 (defvar site-skeletons-suppress-auto-insert-mode 'nil
   "When non-nil ’auto-insert-mode’ will NOT be enabled when the library is loaded")
 
-;;;###autoload
-(defvar site-skeletons-turn-off-auto-insert-mode-with-unload 't
+(defvar site-skeletons-turn-off-auto-insert-mode-when-unloaded 't
   "When ’nil’ disables ’auto-insert-mode’ when ’site-skeletons-unload-function’ is run")
 
-(define-prefix-command 'site-skeletons-prefix 'site-skeletons-prefix-map "Site Skeletons")
-
 (with-eval-after-load "autoinsert"
+
   (setq site-skeletons-base-org-regex
 	(cons (concat "^" (getenv "HOME") "/website/.*[.]org") "org insert web heading"))
   
@@ -69,6 +66,7 @@
 	(concat "#+HTML_HEAD_EXTRA: <link rel=\"stylesheet\" href=\"" v1 "sytles/site.css\"/>\n"))
       "#+HTML_HEAD_EXTRA: <link rel=\"stylesheet\" href=\"" v1 "styles/org.css\"/>\n")))
 
+(define-prefix-command 'site-skeletons-prefix 'site-skeletons-prefix-map "Site Skeletons")
 
 (define-skeleton site-skeletons-css
   "inserts an org formated css line"
@@ -76,6 +74,7 @@
   "#+HTML_HEAD_EXTRA: <link rel=\"stylesheet\" href=\""
   (skeleton-read "Top Directory? ") "styles/"
   _ |(skeleton-read "Css File? ") "\"/>" \n -)
+
 
 (define-key site-skeletons-prefix-map (kbd "c") #'site-skeletons-css)
 
@@ -89,6 +88,25 @@
 (unless site-skeletons-suppress-auto-insert-mode
   (auto-insert-mode t))
 
+;;;; Helper Functions ;;;;
+
+;;;###autoload
+(defun enable-site-skeletons ()
+  (interactive)
+  (require 'site-skeletons)
+  (global-set-key [remap enable-site-skeletons] #'site-skeletons-prefix)
+  (message "Site Skeletons Enabled!"))
+
+(defun disable-site-skeletons ()
+  (interactive)
+  (when (y-or-n-p "Disable site skeletons? ")
+    (global-set-key [remap site-skeletons-prefix] #'enable-site-skeletons)
+    (unload-feature 'site-skeletons)
+    (autoload #'enable-site-skeletons "site-skeletons.el" nil t 'keymap)
+    (message "Site Skeletons Disabled!")))
+
+(define-key site-skeletons-prefix-map (kbd "C-c C-x") #'disable-site-skeletons)
+
 (defun site-skeletons-unload-function ()
   "Unloads ’site-skeletons’"
     (setq auto-insert-alist (assq-delete-all site-skeletons-base-org-regex auto-insert-alist))
@@ -97,12 +115,12 @@
     (fmakunbound 'site-skeletons-prefix)
     (makunbound 'site-skeletons-base-org-regex)
     (makunbound 'site-skeletons-blog-org-regex)
-    (when site-skeletons-turn-off-auto-insert-mode-with-unload
+    (when site-skeletons-turn-off-auto-insert-mode-when-unloaded
       (auto-insert-mode -1)))
 
 (provide 'site-skeletons)
-;;; site-skeletons.el ends here
 
 ;; Local Variables:
 ;; electric-quote-mode: t
 ;; End:
+;;; site-skeletons.el ends here
