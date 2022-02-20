@@ -75,8 +75,17 @@
   (skeleton-read "Top Directory? ") "styles/"
   _ |(skeleton-read "Css File? ") "\"/>" \n -)
 
-
 (define-key site-skeletons-prefix-map (kbd "c") #'site-skeletons-css)
+
+(define-skeleton site-skeletons-inline-tag
+  "inser an org inline tag for html"
+  "Tag Name: "
+  "@@html:<" str " "
+  (skeleton-read "Tag Attributes: ") ">@@"
+  _ |(skeleton-read "Tag Contents: ")
+  "@@html:</" str ">@@")
+
+(define-key site-skeletons-prefix-map (kbd "i") #'site-skeletons-inline-tag)
 
 (define-skeleton site-skeletons-attribute
   "insert html attribute at point"
@@ -84,25 +93,17 @@
   "#+ATTR_HTML: " str -)
 
 (define-key site-skeletons-prefix-map (kbd "a") #'site-skeletons-attribute)
-
+(global-set-key (kbd "C-c s") #'site-skeletons-prefix)
 (unless site-skeletons-suppress-auto-insert-mode
   (auto-insert-mode t))
 
 ;;;; Helper Functions ;;;;
 
-;;;###autoload
-(defun enable-site-skeletons ()
-  (interactive)
-  (require 'site-skeletons)
-  (global-set-key [remap enable-site-skeletons] #'site-skeletons-prefix)
-  (message "Site Skeletons Enabled!"))
-
 (defun disable-site-skeletons ()
   (interactive)
   (when (y-or-n-p "Disable site skeletons? ")
-    (global-set-key [remap site-skeletons-prefix] #'enable-site-skeletons)
     (unload-feature 'site-skeletons)
-    (autoload #'enable-site-skeletons "site-skeletons.el" nil t 'keymap)
+    (autoload #'site-skeletons-prefix "site-skeletons.el" nil t 'keymap)
     (message "Site Skeletons Disabled!")))
 
 (define-key site-skeletons-prefix-map (kbd "C-c C-x") #'disable-site-skeletons)

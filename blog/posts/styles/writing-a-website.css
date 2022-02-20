@@ -10,6 +10,6 @@ img {
     width: 100%;
 }
 
-p.code > code {
+code.code {
     color: green;
 }
